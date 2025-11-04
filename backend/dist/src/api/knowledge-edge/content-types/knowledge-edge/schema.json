@@ -1,0 +1,108 @@
+{
+    "kind": "collectionType",
+    "collectionName": "knowledge_edges",
+    "info": {
+        "singularName": "knowledge-edge",
+        "pluralName": "knowledge-edges",
+        "displayName": "Knowledge Edge",
+        "description": "Relationships between articles in the knowledge graph"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "sourceArticle": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::article.article",
+            "required": true
+        },
+        "targetArticle": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::article.article",
+            "required": true
+        },
+        "relationshipType": {
+            "type": "enumeration",
+            "enum": [
+                "RELATED_TO",
+                "PREREQUISITE",
+                "BUILDS_ON",
+                "SIMILAR_TO",
+                "CONTRASTS",
+                "NEXT_IN_SEQUENCE",
+                "PARENT_CHILD",
+                "EXEMPLIFIES",
+                "SUMMARIZES"
+            ],
+            "required": true,
+            "default": "RELATED_TO"
+        },
+        "weight": {
+            "type": "decimal",
+            "default": 1.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "isActive": {
+            "type": "boolean",
+            "default": true
+        },
+        "isVisible": {
+            "type": "boolean",
+            "default": true
+        },
+        "anchorText": {
+            "type": "string",
+            "maxLength": 120
+        },
+        "linkContext": {
+            "type": "enumeration",
+            "enum": [
+                "INLINE",
+                "SIDEBAR",
+                "FOOTER",
+                "BREADCRUMB"
+            ],
+            "default": "SIDEBAR"
+        },
+        "impressionCount": {
+            "type": "biginteger",
+            "default": "0"
+        },
+        "clickCount": {
+            "type": "biginteger",
+            "default": "0"
+        },
+        "clickThroughRate": {
+            "type": "decimal",
+            "default": 0.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "qualityScore": {
+            "type": "decimal",
+            "default": 0.5,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "confidenceScore": {
+            "type": "decimal",
+            "default": 1.0,
+            "min": 0.0,
+            "max": 1.0
+        },
+        "provenanceType": {
+            "type": "enumeration",
+            "enum": [
+                "EDITORIAL",
+                "ML_GENERATED",
+                "USER_SUGGESTED",
+                "IMPORTED"
+            ],
+            "default": "EDITORIAL"
+        }
+    }
+}

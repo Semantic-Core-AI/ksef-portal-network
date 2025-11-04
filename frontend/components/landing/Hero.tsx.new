@@ -1,0 +1,143 @@
+"use client"
+
+import { motion } from "framer-motion"
+import { AlertTriangle, ArrowRight, CheckCircle2, Calendar } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Countdown } from "@/components/landing/Countdown"
+
+export function Hero() {
+  const trustBadges = [
+    "500+ interpretacji prawnych",
+    "50 ekspertów SKwP",
+    "Partner Ministerstwa Finansów",
+    "Aktualizowane codziennie",
+  ]
+
+  // Animation variants
+  const fadeInUp = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+  }
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  }
+
+  return (
+    <section className="relative min-h-screen flex items-center bg-gradient-to-br from-ksef-navy via-ksef-navy to-ksef-blue overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 35px,
+              rgba(255,255,255,0.1) 35px,
+              rgba(255,255,255,0.1) 70px
+            )`,
+          }}
+        />
+      </div>
+
+      {/* Gradient Overlay (top fade) */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/20 to-transparent" />
+
+      {/* Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 md:py-32 w-full">
+        <motion.div
+          variants={staggerContainer}
+          initial="initial"
+          animate="animate"
+          className="grid lg:grid-cols-[58%_42%] gap-12 lg:gap-16 items-center"
+        >
+          {/* LEFT SIDE: Text Content */}
+          <div className="space-y-8">
+            {/* Eyebrow Badge */}
+            <motion.div variants={fadeInUp} transition={{ duration: 0.5 }} className="inline-flex">
+              <div className="inline-flex items-center gap-2 bg-orange-500/20 backdrop-blur-sm border border-orange-400/30 px-4 py-2 rounded-full">
+                <AlertTriangle className="w-4 h-4 text-orange-300" />
+                <span className="text-sm font-semibold text-orange-200 uppercase tracking-wide">
+                  Obowiązkowe od 1 lutego 2026
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.h1
+              variants={fadeInUp}
+              transition={{ duration: 0.5, delay: 0.15 }}
+              className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight"
+            >
+              Wdróż KSeF bez <span className="text-ksef-gold">ryzyka i kar</span>
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              variants={fadeInUp}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-lg md:text-xl text-white/90 leading-relaxed max-w-2xl"
+            >
+              Kompleksowy przewodnik, interaktywne narzędzia i wsparcie{" "}
+              <span className="font-semibold text-white">50 ekspertów SKwP</span> dla{" "}
+              <span className="font-semibold text-white">3.1 miliona</span> polskich firm
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              variants={fadeInUp}
+              transition={{ duration: 0.5, delay: 0.45 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Button variant="primary" size="lg" className="text-base md:text-lg">
+                Sprawdź gotowość firmy
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-base md:text-lg border-white/30 text-white hover:bg-white hover:text-ksef-navy shadow-lg bg-transparent"
+              >
+                <Calendar className="w-5 h-5" />
+                Zobacz deadline dla Twojej branży
+              </Button>
+            </motion.div>
+
+            {/* Trust Badges */}
+            <motion.div variants={fadeInUp} transition={{ duration: 0.5, delay: 0.6 }} className="pt-6">
+              <div className="grid sm:grid-cols-2 gap-4">
+                {trustBadges.map((badge, index) => (
+                  <div key={index} className="flex items-start gap-3 text-white/90">
+                    <div className="flex-shrink-0 mt-0.5">
+                      <CheckCircle2 className="w-5 h-5 text-ksef-gold" />
+                    </div>
+                    <span className="text-sm md:text-base leading-snug">{badge}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          {/* RIGHT SIDE: Countdown Widget */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.75 }}
+            className="flex justify-center lg:justify-end"
+          >
+            <Countdown />
+          </motion.div>
+        </motion.div>
+      </div>
+
+      {/* Bottom Fade */}
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/10 to-transparent" />
+    </section>
+  )
+}

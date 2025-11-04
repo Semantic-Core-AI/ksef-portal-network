@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_article_author_infos",
+  "info": {
+    "displayName": "Author Info",
+    "description": "Informacje o autorze artykułu",
+    "icon": "user"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "academicTitle": {
+      "type": "enumeration",
+      "enum": ["dr", "dr hab.", "prof. dr hab.", "mgr", "inż.", "mgr inż.", "lic."],
+      "required": false
+    },
+    "role": {
+      "type": "string",
+      "default": "Ekspert KSeF"
+    },
+    "bio": {
+      "type": "text"
+    },
+    "avatar": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "email": {
+      "type": "email"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    }
+  }
+}

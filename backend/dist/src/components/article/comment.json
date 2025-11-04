@@ -1,0 +1,42 @@
+{
+    "collectionName": "components_article_comments",
+    "info": {
+        "displayName": "Comment",
+        "description": "Komentarz użytkownika do artykułu",
+        "icon": "message"
+    },
+    "options": {},
+    "attributes": {
+        "authorName": {
+            "type": "string",
+            "required": true
+        },
+        "authorEmail": {
+            "type": "email",
+            "required": true
+        },
+        "authorAvatar": {
+            "type": "media",
+            "multiple": false,
+            "required": false,
+            "allowedTypes": ["images"]
+        },
+        "content": {
+            "type": "text",
+            "required": true
+        },
+        "rating": {
+            "type": "integer",
+            "min": 1,
+            "max": 5,
+            "default": 5
+        },
+        "isApproved": {
+            "type": "boolean",
+            "default": false
+        },
+        "createdAt": {
+            "type": "datetime"
+        }
+    }
+}
